@@ -19,7 +19,6 @@ export default function CourseFilters() {
     
     const params = new URLSearchParams(searchParams || undefined);
     
-    // Update or remove filter parameters
     Object.entries(newFilters).forEach(([filterKey, filterValue]) => {
       if (filterValue) {
         params.set(filterKey, filterValue);
@@ -57,7 +56,6 @@ export default function CourseFilters() {
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {/* Level Filter */}
         <div>
           <label htmlFor="level" className="block text-sm font-medium text-gray-700 mb-2">
             Level
@@ -75,7 +73,6 @@ export default function CourseFilters() {
           </select>
         </div>
 
-        {/* Language Filter */}
         <div>
           <label htmlFor="language" className="block text-sm font-medium text-gray-700 mb-2">
             Language
@@ -94,7 +91,6 @@ export default function CourseFilters() {
           </select>
         </div>
 
-        {/* Mentor Filter */}
         <div>
           <label htmlFor="mentor" className="block text-sm font-medium text-gray-700 mb-2">
             Mentor

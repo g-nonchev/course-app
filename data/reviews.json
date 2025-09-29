@@ -43,5 +43,14 @@
     "rating": 5,
     "comment": "Comprehensive course covering all web development fundamentals. Highly recommended!",
     "createdAt": "2024-02-03T11:10:00Z"
+  },
+  {
+    "courseId": "5",
+    "userId": "user1",
+    "userName": "Alice Johnson",
+    "rating": 5,
+    "comment": "fdsfsd",
+    "id": "1759136050155",
+    "createdAt": "2025-09-29T08:54:10.155Z"
   }
 ]

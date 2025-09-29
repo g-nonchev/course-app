@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getCourses, createCourse, searchCourses } from '@/lib/mockDb';
 import { createCourseSchema, courseFiltersSchema } from '@/lib/validation';
 
-// GET /api/courses - List all courses or search/filter
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
@@ -11,7 +10,6 @@ export async function GET(request: NextRequest) {
     const language = searchParams.get('language') || undefined;
     const mentor = searchParams.get('mentor') || undefined;
 
-    // Validate filters
     courseFiltersSchema.parse({
       query,
       level: level as 'beginner' | 'intermediate' | 'advanced' | undefined,
@@ -40,15 +38,12 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// POST /api/courses - Create a new course
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
-    // Validate input
     const validatedData = createCourseSchema.parse(body);
     
-    // Create course
     const newCourse = await createCourse(validatedData);
     
     return NextResponse.json(newCourse, { status: 201 });

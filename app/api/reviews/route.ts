@@ -2,15 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createReview } from '@/lib/mockDb';
 import { createReviewSchema } from '@/lib/validation';
 
-// POST /api/reviews - Create a new review
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
-    // Validate input
     const validatedData = createReviewSchema.parse(body);
     
-    // Create review
     const newReview = await createReview(validatedData);
     
     return NextResponse.json(newReview, { status: 201 });

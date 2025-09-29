@@ -22,19 +22,16 @@ export default function ProtectedClient({
     if (status === 'loading') return; // Still loading
 
     if (!session) {
-      // Not authenticated, redirect to login
       router.push(`${redirectTo}?callbackUrl=${encodeURIComponent(window.location.pathname)}`);
       return;
     }
 
-    // Check role if required
     if (requiredRole && session.user?.role !== requiredRole) {
       router.push('/'); // Redirect to home if role doesn't match
       return;
     }
   }, [session, status, router, redirectTo, requiredRole]);
 
-  // Show loading state
   if (status === 'loading') {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -43,16 +40,13 @@ export default function ProtectedClient({
     );
   }
 
-  // Show nothing while redirecting
   if (!session) {
     return null;
   }
 
-  // Check role if required
   if (requiredRole && session.user?.role !== requiredRole) {
     return null;
   }
 
-  // Render children if authenticated and role matches (if required)
   return <>{children}</>;
 }

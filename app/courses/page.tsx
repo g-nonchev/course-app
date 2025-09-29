@@ -4,12 +4,12 @@ import CourseCard from '@/components/CourseCard';
 import CourseFilters from '@/components/CourseFilters';
 
 interface CoursesPageProps {
-  searchParams: {
+  searchParams: Promise<{
     query?: string;
     level?: string;
     language?: string;
     mentor?: string;
-  };
+  }>;
 }
 
 export const metadata = {
@@ -18,12 +18,13 @@ export const metadata = {
 };
 
 async function CoursesList({ searchParams }: CoursesPageProps) {
+  const params = await searchParams;
   const courses = await searchCourses(
-    searchParams.query || '',
+    params.query || '',
     {
-      level: searchParams.level as 'beginner' | 'intermediate' | 'advanced' | undefined,
-      language: searchParams.language,
-      mentor: searchParams.mentor,
+      level: params.level as 'beginner' | 'intermediate' | 'advanced' | undefined,
+      language: params.language,
+      mentor: params.mentor,
     }
   );
 
@@ -74,7 +75,6 @@ export default function CoursesPage({ searchParams }: CoursesPageProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-4">All Courses</h1>
           <p className="text-gray-600">
@@ -82,21 +82,18 @@ export default function CoursesPage({ searchParams }: CoursesPageProps) {
           </p>
         </div>
 
-        {/* Filters */}
         <div className="mb-8">
           <Suspense fallback={<div className="h-32 bg-gray-300 rounded-lg animate-pulse"></div>}>
             <CourseFilters />
           </Suspense>
         </div>
 
-        {/* Results Count */}
         <div className="mb-6">
           <Suspense fallback={<div className="h-6 bg-gray-300 rounded w-32 animate-pulse"></div>}>
             <ResultsCount searchParams={searchParams} />
           </Suspense>
         </div>
 
-        {/* Courses Grid */}
         <Suspense fallback={<CoursesLoading />}>
           <CoursesList searchParams={searchParams} />
         </Suspense>
@@ -106,12 +103,13 @@ export default function CoursesPage({ searchParams }: CoursesPageProps) {
 }
 
 async function ResultsCount({ searchParams }: CoursesPageProps) {
+  const params = await searchParams;
   const courses = await searchCourses(
-    searchParams.query || '',
+    params.query || '',
     {
-      level: searchParams.level as 'beginner' | 'intermediate' | 'advanced' | undefined,
-      language: searchParams.language,
-      mentor: searchParams.mentor,
+      level: params.level as 'beginner' | 'intermediate' | 'advanced' | undefined,
+      language: params.language,
+      mentor: params.mentor,
     }
   );
 

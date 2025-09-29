@@ -55,7 +55,6 @@ export default function CreateCourseForm() {
     setError('');
 
     try {
-      // Validate input
       const validatedData = createCourseSchema.parse(formData);
 
       const response = await fetch('/api/courses', {
@@ -74,7 +73,6 @@ export default function CreateCourseForm() {
       const newCourse = await response.json();
       setSuccess(true);
       
-      // Reset form
       setFormData({
         title: '',
         slug: '',
@@ -87,7 +85,6 @@ export default function CreateCourseForm() {
         price: 0,
       });
       
-      // Redirect to the new course page
       setTimeout(() => {
         router.push(`/courses/${newCourse.slug}`);
       }, 1500);

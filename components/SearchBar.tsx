@@ -18,7 +18,6 @@ export default function SearchBar({ onSearch, placeholder = "Search courses..." 
     if (onSearch) {
       onSearch(query);
     } else {
-      // Navigate to courses page with search query
       const params = new URLSearchParams(searchParams || undefined);
       if (query) {
         params.set('query', query);

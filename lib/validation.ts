@@ -1,6 +1,5 @@
 import { z } from 'zod';
 
-// Course validation schemas
 export const createCourseSchema = z.object({
   title: z.string().min(1, 'Title is required').max(100, 'Title must be less than 100 characters'),
   slug: z.string().min(1, 'Slug is required').max(100, 'Slug must be less than 100 characters'),
@@ -19,7 +18,6 @@ export const createCourseSchema = z.object({
 
 export const updateCourseSchema = createCourseSchema.partial();
 
-// Review validation schemas
 export const createReviewSchema = z.object({
   courseId: z.string().min(1, 'Course ID is required'),
   userId: z.string().min(1, 'User ID is required'),
@@ -28,7 +26,6 @@ export const createReviewSchema = z.object({
   comment: z.string().min(1, 'Comment is required').max(500, 'Comment must be less than 500 characters'),
 });
 
-// Auth validation schemas
 export const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
   password: z.string().min(1, 'Password is required'),
@@ -43,7 +40,6 @@ export const registerSchema = z.object({
   }).default('student'),
 });
 
-// Search and filter schemas
 export const courseFiltersSchema = z.object({
   query: z.string().optional(),
   level: z.enum(['beginner', 'intermediate', 'advanced'], {
@@ -53,7 +49,6 @@ export const courseFiltersSchema = z.object({
   mentor: z.string().optional(),
 });
 
-// Type exports
 export type CreateCourseInput = z.infer<typeof createCourseSchema>;
 export type UpdateCourseInput = z.infer<typeof updateCourseSchema>;
 export type CreateReviewInput = z.infer<typeof createReviewSchema>;

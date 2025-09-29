@@ -36,7 +36,6 @@ export default function AddReviewForm({ courseId }: AddReviewFormProps) {
     setError('');
 
     try {
-      // Validate input
       const validatedData = createReviewSchema.parse({
         courseId,
         userId: session.user?.id || '',
@@ -62,7 +61,6 @@ export default function AddReviewForm({ courseId }: AddReviewFormProps) {
       setComment('');
       setRating(5);
       
-      // Refresh the page to show the new review
       setTimeout(() => {
         window.location.reload();
       }, 1500);

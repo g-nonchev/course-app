@@ -7,8 +7,6 @@ interface LegacyCoursesPageProps {
   courses: Course[];
 }
 
-// This is a legacy page using Pages Router with getServerSideProps
-// Demonstrating server-side rendering with mock data
 export default function LegacyCoursesPage({ courses }: LegacyCoursesPageProps) {
   const levelColors = {
     beginner: 'bg-green-100 text-green-800',
@@ -26,7 +24,6 @@ export default function LegacyCoursesPage({ courses }: LegacyCoursesPageProps) {
       </Head>
 
       <div className="min-h-screen bg-gray-50">
-        {/* Header */}
         <header className="bg-white shadow-sm border-b">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
@@ -59,9 +56,7 @@ export default function LegacyCoursesPage({ courses }: LegacyCoursesPageProps) {
           </div>
         </header>
 
-        {/* Main Content */}
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Page Header */}
           <div className="mb-8">
             <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4 mb-6">
               <div className="flex">
@@ -90,12 +85,10 @@ export default function LegacyCoursesPage({ courses }: LegacyCoursesPageProps) {
             </p>
           </div>
 
-          {/* Courses Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {courses.map((course) => (
               <div key={course.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                 <div className="relative h-48">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={course.thumbnail}
                     alt={course.title}
@@ -155,7 +148,6 @@ export default function LegacyCoursesPage({ courses }: LegacyCoursesPageProps) {
             ))}
           </div>
 
-          {/* Footer Note */}
           <div className="mt-12 text-center">
             <p className="text-gray-500 text-sm">
               This page demonstrates server-side rendering with getServerSideProps.
@@ -167,7 +159,6 @@ export default function LegacyCoursesPage({ courses }: LegacyCoursesPageProps) {
           </div>
         </main>
 
-        {/* Footer */}
         <footer className="bg-gray-900 text-white mt-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="text-center">
@@ -186,13 +177,10 @@ export default function LegacyCoursesPage({ courses }: LegacyCoursesPageProps) {
   );
 }
 
-// Server-side rendering with getServerSideProps
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    // Import the mock database helper
     const { getCourses } = await import('@/lib/mockDb');
     
-    // Fetch courses on the server
     const courses = await getCourses();
     
     return {
@@ -203,7 +191,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
   } catch (error) {
     console.error('Error fetching courses:', error);
     
-    // Return empty courses array if there's an error
     return {
       props: {
         courses: [],

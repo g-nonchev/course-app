@@ -1,8 +1,6 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
-// Server-only file-based database helper
-// Note: This is for demo purposes only - in production, use a proper database
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 
@@ -41,7 +39,6 @@ export interface User {
   role: 'student' | 'mentor' | 'admin';
 }
 
-// Atomic read operations
 async function readJsonFile<T>(filename: string): Promise<T[]> {
   try {
     const filePath = path.join(DATA_DIR, filename);
@@ -53,7 +50,6 @@ async function readJsonFile<T>(filename: string): Promise<T[]> {
   }
 }
 
-// Atomic write operations
 async function writeJsonFile<T>(filename: string, data: T[]): Promise<void> {
   try {
     const filePath = path.join(DATA_DIR, filename);
@@ -65,7 +61,6 @@ async function writeJsonFile<T>(filename: string, data: T[]): Promise<void> {
   }
 }
 
-// Course operations
 export async function getCourses(): Promise<Course[]> {
   return readJsonFile<Course>('courses.json');
 }
@@ -94,7 +89,6 @@ export async function createCourse(courseData: Omit<Course, 'id' | 'createdAt' |
   return newCourse;
 }
 
-// Review operations
 export async function getReviews(): Promise<Review[]> {
   return readJsonFile<Review>('reviews.json');
 }
@@ -117,7 +111,6 @@ export async function createReview(reviewData: Omit<Review, 'id' | 'createdAt'>)
   return newReview;
 }
 
-// User operations
 export async function getUsers(): Promise<User[]> {
   return readJsonFile<User>('users.json');
 }
@@ -132,7 +125,6 @@ export async function getUserById(id: string): Promise<User | null> {
   return users.find(user => user.id === id) || null;
 }
 
-// Search and filter operations
 export async function searchCourses(query: string, filters?: {
   level?: string;
   language?: string;
@@ -142,7 +134,6 @@ export async function searchCourses(query: string, filters?: {
   
   let filteredCourses = courses;
   
-  // Text search
   if (query) {
     const searchTerm = query.toLowerCase();
     filteredCourses = filteredCourses.filter(course =>
@@ -152,7 +143,6 @@ export async function searchCourses(query: string, filters?: {
     );
   }
   
-  // Apply filters
   if (filters?.level) {
     filteredCourses = filteredCourses.filter(course => course.level === filters.level);
   }

@@ -29,7 +29,6 @@ export default async function DashboardPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Create Course Form */}
             <div className="lg:col-span-2">
               <div className="bg-white rounded-lg shadow-sm border p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Create New Course</h2>
@@ -37,7 +36,6 @@ export default async function DashboardPage() {
               </div>
             </div>
 
-            {/* Dashboard Stats */}
             <div className="lg:col-span-1">
               <div className="bg-white rounded-lg shadow-sm border p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Stats</h3>

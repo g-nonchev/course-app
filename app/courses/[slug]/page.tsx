@@ -65,7 +65,6 @@ export default async function CoursePage({ params }: CoursePageProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Breadcrumb */}
         <nav className="mb-8">
           <ol className="flex items-center space-x-2 text-sm text-gray-500">
             <li>
@@ -81,9 +80,7 @@ export default async function CoursePage({ params }: CoursePageProps) {
         </nav>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Content */}
           <div className="lg:col-span-2">
-            {/* Course Header */}
             <div className="bg-white rounded-lg shadow-sm border p-8 mb-8">
               <div className="flex flex-col md:flex-row md:items-start gap-6">
                 <div className="relative w-full md:w-80 h-48 flex-shrink-0">
@@ -136,7 +133,6 @@ export default async function CoursePage({ params }: CoursePageProps) {
               </div>
             </div>
 
-            {/* Reviews Section */}
             <div className="bg-white rounded-lg shadow-sm border p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">
                 Student Reviews ({reviews.length})
@@ -151,7 +147,6 @@ export default async function CoursePage({ params }: CoursePageProps) {
             </div>
           </div>
 
-          {/* Sidebar */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-sm border p-6 sticky top-8">
               <div className="text-center mb-6">

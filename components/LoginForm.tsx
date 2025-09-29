@@ -21,7 +21,6 @@ export default function LoginForm() {
     setError('');
 
     try {
-      // Validate input
       loginSchema.parse({ email, password });
 
       const result = await signIn('credentials', {
@@ -33,7 +32,6 @@ export default function LoginForm() {
       if (result?.error) {
         setError('Invalid email or password');
       } else {
-        // Redirect to callback URL or dashboard
         router.push(callbackUrl);
         router.refresh();
       }
@@ -105,7 +103,6 @@ export default function LoginForm() {
           </div>
         </form>
 
-        {/* Demo Accounts */}
         <div className="mt-8 border-t border-gray-200 pt-6">
           <h3 className="text-sm font-medium text-gray-900 mb-4">Demo Accounts</h3>
           <div className="space-y-2 text-xs text-gray-600">

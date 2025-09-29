@@ -17,11 +17,8 @@ export const authOptions: NextAuthOptions = {
         }
 
         try {
-          // Validate input
           const { email, password } = loginSchema.parse(credentials);
           
-          // Find user in mock database
-          // Note: In production, passwords should be hashed using bcrypt or similar
           const user = await getUserByEmail(email);
           
           if (!user || user.password !== password) {
@@ -43,10 +40,10 @@ export const authOptions: NextAuthOptions = {
   ],
   session: {
     strategy: 'jwt',
-    maxAge: 24 * 60 * 60, // 24 hours
+    maxAge: 24 * 60 * 60,
   },
   jwt: {
-    maxAge: 24 * 60 * 60, // 24 hours
+    maxAge: 24 * 60 * 60,
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -65,7 +62,7 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: '/login',
-    error: '/login', // Redirect to login on auth errors
+    error: '/login',
   },
   secret: process.env.NEXTAUTH_SECRET || 'mZKv7ToFsN5YRBjUkH88vUqcmjHjEbkiRsAsKp6CVhg=',
   debug: process.env.NODE_ENV === 'development',
