@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "courseId": "1",
+    "userId": "user1",
+    "userName": "Alice Johnson",
+    "rating": 5,
+    "comment": "Excellent course! John explains React concepts clearly and the projects are very practical.",
+    "createdAt": "2024-01-25T10:30:00Z"
+  },
+  {
+    "id": "2",
+    "courseId": "1",
+    "userId": "user2",
+    "userName": "Bob Smith",
+    "rating": 4,
+    "comment": "Great course overall. The hooks section could use more examples, but very comprehensive.",
+    "createdAt": "2024-01-28T14:15:00Z"
+  },
+  {
+    "id": "3",
+    "courseId": "2",
+    "userId": "user3",
+    "userName": "Carol Davis",
+    "rating": 5,
+    "comment": "Perfect for beginners! Sarah makes data science concepts easy to understand.",
+    "createdAt": "2024-01-30T09:45:00Z"
+  },
+  {
+    "id": "4",
+    "courseId": "3",
+    "userId": "user1",
+    "userName": "Alice Johnson",
+    "rating": 4,
+    "comment": "Advanced concepts well explained. The decorators section was particularly helpful.",
+    "createdAt": "2024-02-01T16:20:00Z"
+  },
+  {
+    "id": "5",
+    "courseId": "4",
+    "userId": "user4",
+    "userName": "David Wilson",
+    "rating": 5,
+    "comment": "Comprehensive course covering all web development fundamentals. Highly recommended!",
+    "createdAt": "2024-02-03T11:10:00Z"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "user1",
+    "name": "Alice Johnson",
+    "email": "alice@example.com",
+    "password": "password123",
+    "role": "student"
+  },
+  {
+    "id": "user2",
+    "name": "Bob Smith",
+    "email": "bob@example.com",
+    "password": "password123",
+    "role": "student"
+  },
+  {
+    "id": "mentor1",
+    "name": "John Doe",
+    "email": "john@example.com",
+    "password": "mentor123",
+    "role": "mentor"
+  },
+  {
+    "id": "mentor2",
+    "name": "Sarah Wilson",
+    "email": "sarah@example.com",
+    "password": "mentor123",
+    "role": "mentor"
+  },
+  {
+    "id": "admin1",
+    "name": "Admin User",
+    "email": "admin@example.com",
+    "password": "admin123",
+    "role": "admin"
+  }
+]
